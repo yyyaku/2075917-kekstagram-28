@@ -1,27 +1,8 @@
-/*
-
-comments, массив объектов — список комментариев, оставленных другими пользователями к этой фотографии. Количество комментариев к каждой фотографии вы определяете на своё усмотрение. Все комментарии генерируются случайным образом. Пример описания объекта с комментарием:
-
-{
-  id: 135,
-  avatar: 'img/avatar-6.svg',
-  message: 'В целом всё неплохо. Но не всё.',
-  name: 'Артём',
-}
-У каждого комментария есть идентификатор — id — любое число. Идентификаторы не должны повторяться.
-
-Поле avatar — это строка, значение которой формируется по правилу img/avatar-{{случайное число от 1 до 6}}.svg. Аватарки подготовлены в директории img.
-
-Для формирования текста комментария — message — вам необходимо взять одно или два случайных предложения из представленных ниже:
-
-Всё отлично!
-В целом всё неплохо. Но не всё.
-Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.
-Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.
-Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.
-Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!
-Имена авторов также должны быть случайными. Набор имён для комментаторов составьте сами. Подставляйте случайное имя в поле name.
-*/
+const AVATAR_ID_COUNT = 6;
+const LIKES_MIN_COUNT = 15;
+const LIKES_MAX_COUNT = 200;
+const COMMENTS_MAX_COUNT = 6;
+const OBJECT_COUNT = 25;
 
 const MESSAGES = [
   'Всё отлично!',
@@ -75,11 +56,6 @@ const generateId = createIdGenerator();
 const generatePhotosId = createIdGenerator();
 const generateCommentsId = createIdGenerator();
 
-const AVATAR_ID_COUNT = 6;
-const LIKES_MIN_COUNT = 15;
-const LIKES_MAX_COUNT = 200;
-const COMMENTS_MAX_COUNT = 6;
-
 const createComments = () => ({
   id: generateCommentsId(),
   avatar: `img/avatar-${ getRandomInteger(1, AVATAR_ID_COUNT) }.svg`,
@@ -95,5 +71,5 @@ const createObject = () => ({
   comments: Array.from({length: getRandomInteger(1, COMMENTS_MAX_COUNT)}, createComments),
 });
 
-const similarWizards = Array.from({length: 25}, createObject);
-console.log(similarWizards);
+const similarObjects = Array.from({length: OBJECT_COUNT}, createObject);
+similarObjects();
