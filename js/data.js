@@ -1,4 +1,4 @@
-import {getRandomArrayElement, getRandomInteger} from './util.js';
+import {getRandomInteger, getRandomArrayElement} from './util.js';
 
 const AVATAR_ID_COUNT = 6;
 const LIKES_MIN_COUNT = 15;
