@@ -1,2 +1,4 @@
-import {createObjects} from './data.js';
-createObjects();
+import {similarListElement} from './popup.js';
+
+similarListElement();
+
