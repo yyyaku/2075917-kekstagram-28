@@ -1,4 +1,7 @@
-import {similarListElement} from './popup.js';
+import {createObjects} from './data.js';
+import {createPopup} from './popup.js';
 
-similarListElement();
+const similarObjects = createObjects(25);
 
+createObjects();
+createPopup(similarObjects);
