@@ -64,6 +64,6 @@ const createObject = () => ({
   comments: Array.from({length: getRandomInteger(1, COMMENTS_MAX_COUNT)}, createComments),
 });
 
-const createObjects = () => Array.from({length: OBJECT_COUNT}, createObject);
+const createObjects = (count) => Array.from({length: count}, createObject);
 
-export {createObjects};
+export {createObjects, OBJECT_COUNT};
