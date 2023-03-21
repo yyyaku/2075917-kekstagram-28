@@ -4,6 +4,7 @@ const AVATAR_ID_COUNT = 6;
 const LIKES_MIN_COUNT = 15;
 const LIKES_MAX_COUNT = 200;
 const COMMENTS_MAX_COUNT = 6;
+const OBJECT_COUNT = 25;
 
 const MESSAGES = [
   'Всё отлично!',
@@ -65,4 +66,4 @@ const createObject = () => ({
 
 const createObjects = (count) => Array.from({length: count}, createObject);
 
-export {createObjects};
+export {createObjects, OBJECT_COUNT};
