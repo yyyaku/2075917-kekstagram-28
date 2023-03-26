@@ -15,11 +15,10 @@ const createThumbnail = (similarObjects) => {
     pictureElement.querySelector('.picture__comments').textContent = comments.length;
     pictureElement.dataset.thumbnailId = id;
 
-
     container.appendChild(pictureElement);
   });
 
   container.appendChild(similarListFragment);
 };
 
-export {createThumbnail, container};
+export {createThumbnail};
