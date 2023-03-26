@@ -1,6 +1,7 @@
 import {createObjects, OBJECT_COUNT} from './data.js';
-import {createPopup} from './popup.js';
+import {createThumbnail} from './thumbnail.js';
+import {createGallery} from './gallery.js';
 
 const similarObjects = createObjects(OBJECT_COUNT);
 
-createPopup(similarObjects);
+createGallery(createThumbnail(similarObjects));
