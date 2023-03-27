@@ -17,7 +17,7 @@ const createGallery = (pictures) => {
     showBigPhoto(picture);
   });
 
-  createThumbnail(pictures, container);
+  createThumbnail(pictures);
 };
 
 export {createGallery};
