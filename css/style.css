@@ -522,10 +522,11 @@ main {
   max-height: 600px;
 }
 
-
-/**
- * Шкала регулирования глубины фильтра
- */
+.img-upload__error {
+  display: block;
+  font-size: 0.85em;
+  color: #c00;
+}
 
 .effect-level {
   position: absolute;
