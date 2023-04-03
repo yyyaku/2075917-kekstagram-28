@@ -1,4 +1,6 @@
 import {isEscapeKey} from './util.js';
+import {resetScale} from './scale.js';
+import {resetEffects} from './effect.js';
 
 const TAG_ERROR_TEXT = 'Неправильно заполнены хэштеги';
 const HASHTAG_MAX_COUNT = 140;
@@ -27,6 +29,8 @@ const showModal = () => {
 const closeModal = () => {
   form.reset();
   pristine.reset();
+  resetScale();
+  resetEffects();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onModalKeydown);
@@ -74,8 +78,8 @@ pristine.addValidator(
   TAG_ERROR_TEXT
 );
 
-const onFormSubmit = (evt) => {
-  evt.preventDefault();
+const onFormSubmit = () => {
+  // evt.preventDefault();
   pristine.validate();
 };
 
