@@ -1,3 +1,5 @@
+import {isEscapeKey} from './util.js';
+
 const COMMENTS_PORTION = 5;
 
 const body = document.querySelector('body');
@@ -45,24 +47,16 @@ const createComments = () => {
 const closeBigPhoto = () => {
   bigPhoto.classList.add('hidden');
   body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onDocumentKeydown);
+  document.removeEventListener('keydown', onPhotoKeydown);
   commentsShown = 0;
 };
 
-function onDocumentKeydown (evt) {
-  if (evt.key === 'Escape') {
+function onPhotoKeydown (evt) {
+  if (isEscapeKey) {
     evt.preventDefault();
     closeBigPhoto();
   }
 }
-
-const onCancelButtonClick = () => {
-  closeBigPhoto();
-};
-
-const onCommentsLoaderClick = () => {
-  createComments();
-};
 
 const createBigPhoto = ({url, likes, description}) => {
   bigPhoto.querySelector('.big-picture__img img').src = url;
@@ -74,13 +68,21 @@ const createBigPhoto = ({url, likes, description}) => {
 const showBigPhoto = (data) => {
   bigPhoto.classList.remove('hidden');
   body.classList.add('modal-open');
-  document.addEventListener('keydown', onDocumentKeydown);
+  document.addEventListener('keydown', onPhotoKeydown);
 
   createBigPhoto(data);
   comments = data.comments;
   if (comments.length > 0) {
     createComments(comments);
   }
+};
+
+const onCancelButtonClick = () => {
+  closeBigPhoto();
+};
+
+const onCommentsLoaderClick = () => {
+  createComments();
 };
 
 cancelButton.addEventListener('click', onCancelButtonClick);

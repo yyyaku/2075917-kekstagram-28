@@ -3,7 +3,7 @@ import {getRandomInteger, getRandomArrayElement} from './util.js';
 const AVATAR_ID_COUNT = 6;
 const LIKES_MIN_COUNT = 15;
 const LIKES_MAX_COUNT = 200;
-const COMMENTS_MAX_COUNT = 6;
+const COMMENTS_MAX_COUNT = 20;
 const OBJECT_COUNT = 25;
 
 const MESSAGES = [
