@@ -1,4 +1,3 @@
-import {isEscapeKey} from './util.js';
 import {resetScale} from './scale.js';
 import {resetEffects} from './effect.js';
 
@@ -41,7 +40,7 @@ const isTextFieldFocused = () =>
   document.activeElement === coomentField;
 
 function onModalKeydown(evt) {
-  if (isEscapeKey && !isTextFieldFocused()) {
+  if (evt.key === 'Escape' && !isTextFieldFocused()) {
     evt.preventDefault();
     closeModal();
   }

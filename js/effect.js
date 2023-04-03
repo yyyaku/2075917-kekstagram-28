@@ -86,7 +86,7 @@ const updateSlider = () => {
 };
 
 const onEffectsChange = (evt) => {
-  if(!evt.target.classList.contains('.effects__radio')) {
+  if(!evt.target.classList.contains('effects__radio')) {
     return;
   }
   effectActual = EFFECTS.find((effect) => effect.name === evt.target.value);

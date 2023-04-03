@@ -1,5 +1,3 @@
-import {isEscapeKey} from './util.js';
-
 const COMMENTS_PORTION = 5;
 
 const body = document.querySelector('body');
@@ -52,7 +50,7 @@ const closeBigPhoto = () => {
 };
 
 function onPhotoKeydown (evt) {
-  if (isEscapeKey) {
+  if (evt.key === 'Escape') {
     evt.preventDefault();
     closeBigPhoto();
   }
