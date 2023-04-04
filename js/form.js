@@ -1,7 +1,7 @@
-import {isEscapeKey} from './util.js';
+import {resetScale} from './scale.js';
+import {resetEffects} from './effect.js';
 
-const TAG_ERROR_TEXT = 'Неправильно заполнены хэштеги';
-const HASHTAG_MAX_COUNT = 140;
+const HASHTAG_MAX_COUNT = 5;
 const VALID_SYMBOL = /^#[a-za-яё0-9]{1,19}$/i;
 
 const body = document.querySelector('body');
@@ -27,6 +27,8 @@ const showModal = () => {
 const closeModal = () => {
   form.reset();
   pristine.reset();
+  resetScale();
+  resetEffects();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onModalKeydown);
@@ -37,7 +39,7 @@ const isTextFieldFocused = () =>
   document.activeElement === coomentField;
 
 function onModalKeydown(evt) {
-  if (isEscapeKey && !isTextFieldFocused()) {
+  if (evt.key === 'Escape' && !isTextFieldFocused()) {
     evt.preventDefault();
     closeModal();
   }
@@ -60,22 +62,50 @@ const tagUnique = (tags) => {
   return lowerCaseTags.length === new Set(lowerCaseTags).size;
 };
 
+const validateCountTags = (value) => {
+  const tags = value
+    .trim()
+    .split(' ')
+    .filter((tag) => tag.trim().length);
+  return hasValidCount(tags);
+};
+
+const validateUniqueTags = (value) => {
+  const tags = value
+    .trim()
+    .split(' ')
+    .filter((tag) => tag.trim().length);
+  return tagUnique(tags);
+};
+
 const validateTags = (value) => {
   const tags = value
     .trim()
     .split(' ')
     .filter((tag) => tag.trim().length);
-  return hasValidCount(tags) && tagUnique(tags) && tags.every(isValidTag);
+  return tags.every(isValidTag);
 };
 
 pristine.addValidator(
   hashtagField,
-  validateTags,
-  TAG_ERROR_TEXT
+  validateCountTags,
+  'Количество хэштегов не должно быть больше пяти'
 );
 
-const onFormSubmit = (evt) => {
-  evt.preventDefault();
+pristine.addValidator(
+  hashtagField,
+  validateUniqueTags,
+  'Хэштеги не должны повторяться'
+);
+
+pristine.addValidator(
+  hashtagField,
+  validateTags,
+  'Хэштег должен начинаться с "#"'
+);
+
+const onFormSubmit = () => {
+  // evt.preventDefault();
   pristine.validate();
 };
 
