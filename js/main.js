@@ -1,6 +1,22 @@
-import {createObjects, OBJECT_COUNT} from './data.js';
 import {createGallery} from './gallery.js';
+import {getData, sendData} from './api.js';
+import {showAlert} from './util.js';
+import {setOnFormSubmit, closeModal} from './form.js';
+import {showOkMessage, showErrMessage} from './message.js';
 
-import './form.js';
+setOnFormSubmit(async (data) => {
+  try {
+    await sendData(data);
+    closeModal();
+    showOkMessage();
+  } catch {
+    showErrMessage();
+  }
+});
 
-createGallery(createObjects(OBJECT_COUNT));
+try {
+  const data = await getData();
+  createGallery(data);
+} catch (err) {
+  showAlert(err.message);
+}
