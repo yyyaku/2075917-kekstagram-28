@@ -2,13 +2,14 @@ import {createGallery} from './gallery.js';
 import {getData, sendData} from './api.js';
 import {showAlert} from './alert.js';
 import {setOnFormSubmit, closeModal} from './form.js';
-import {showSuccessMessage, showErrorMessage} from './message.js';
+import {showSuccessMessage} from './message-ok.js';
+import {showErrorMessage} from './message-error.js';
 
 setOnFormSubmit(async (data) => {
   try {
     await sendData(data);
-    closeModal();
     showSuccessMessage();
+    closeModal();
   } catch {
     showErrorMessage();
   }
