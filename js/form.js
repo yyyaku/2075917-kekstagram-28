@@ -1,5 +1,6 @@
 import {resetScale} from './scale.js';
 import {resetEffects} from './effect.js';
+import {showPreviewImg} from './loading-photo.js';
 
 const HASHTAG_MAX_COUNT = 5;
 const VALID_SYMBOL = /^#[a-za-яё0-9]{1,19}$/i;
@@ -48,6 +49,7 @@ function onModalKeydown(evt) {
 
 const onFileFieldChange = () => {
   showModal();
+  showPreviewImg();
 };
 
 const onCancelButtonClick = () => {

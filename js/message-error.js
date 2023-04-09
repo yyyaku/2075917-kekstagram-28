@@ -1,40 +1,40 @@
-const submitMessagePlaceErr = document.querySelector('body');
-const submitErrMessageTemplate = document.querySelector('#error').content.querySelector('.error');
+const submitMessagePlaceError = document.querySelector('body');
+const submitErrorMessageTemplate = document.querySelector('#error').content.querySelector('.error');
 
-const messageErrElement = submitErrMessageTemplate.cloneNode(true);
-submitMessagePlaceErr.append(messageErrElement);
+const messageErrElement = submitErrorMessageTemplate.cloneNode(true);
+submitMessagePlaceError.append(messageErrElement);
 messageErrElement.classList.add('hidden');
 
-const submitErrMessageContainer = document.querySelector('.error');
-const closeModalSubmitErr = document.querySelector('.error__button');
+const submitErrorMessageContainer = document.querySelector('.error');
+const closeModalSubmitError = document.querySelector('.error__button');
 
-const closeErrMessage = () => {
-  submitErrMessageContainer.classList.add('hidden');
-  submitMessagePlaceErr.classList.remove('modal-open');
+const closeErrorMessage = () => {
+  submitErrorMessageContainer.classList.add('hidden');
+  submitMessagePlaceError.classList.remove('modal-open');
 };
 
-const onModalKeydownErr = (evt) => {
+const onModalKeydownError = (evt) => {
   if (evt.key === 'Escape'(evt)) {
     evt.preventDefault();
-    closeErrMessage();
+    closeErrorMessage();
   }
 };
 
 document.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('error')) {
-    closeErrMessage();
+    closeErrorMessage();
   }
 });
 
 const showErrorMessage = () => {
-  submitErrMessageContainer.classList.remove('hidden');
-  submitMessagePlaceErr.classList.add('modal-open');
+  submitErrorMessageContainer.classList.remove('hidden');
+  submitMessagePlaceError.classList.add('modal-open');
 
-  document.addEventListener('keydown', onModalKeydownErr);
+  document.addEventListener('keydown', onModalKeydownError);
 };
 
-closeModalSubmitErr.addEventListener('click', () => {
-  closeErrMessage();
+closeModalSubmitError.addEventListener('click', () => {
+  closeErrorMessage();
 });
 
 export {showErrorMessage};

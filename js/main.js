@@ -4,7 +4,7 @@ import {showAlert} from './alert.js';
 import {setOnFormSubmit, closeModal} from './form.js';
 import {showSuccessMessage} from './message-ok.js';
 import {showErrorMessage} from './message-error.js';
-import {showSorting, reGenerateMiniatures, setBtnClick} from './sort.js';
+import {showSorting, reGenerateThumbnail, setButtonClick} from './sort.js';
 import {debounce} from './util.js';
 
 const TIMEOUT_OF_DELAY = 500;
@@ -23,8 +23,8 @@ try {
   const data = await getData();
   createGallery(data);
   showSorting();
-  setBtnClick(debounce((btn) => {
-    reGenerateMiniatures(data, btn);
+  setButtonClick(debounce((btn) => {
+    reGenerateThumbnail(data, btn);
   }, TIMEOUT_OF_DELAY));
 } catch (err) {
   showAlert(err.message);
