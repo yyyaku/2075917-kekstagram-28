@@ -16,4 +16,6 @@ const debounce = (callback, timeoutDelay) => {
   };
 };
 
-export {getRandomInteger, getRandomArrayElement, debounce};
+const compareRandom = () => Math.random() - 0.5;
+
+export {getRandomInteger, getRandomArrayElement, debounce, compareRandom};

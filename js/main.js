@@ -7,7 +7,7 @@ import {showErrorMessage} from './message-error.js';
 import {showSorting, reGenerateMiniatures, setBtnClick} from './sort.js';
 import {debounce} from './util.js';
 
-const TYME_OUT_OF_DELAY = 500;
+const TIMEOUT_OF_DELAY = 500;
 
 setOnFormSubmit(async (data) => {
   try {
@@ -25,7 +25,7 @@ try {
   showSorting();
   setBtnClick(debounce((btn) => {
     reGenerateMiniatures(data, btn);
-  }, TYME_OUT_OF_DELAY));
+  }, TIMEOUT_OF_DELAY));
 } catch (err) {
   showAlert(err.message);
 }
