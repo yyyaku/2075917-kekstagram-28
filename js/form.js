@@ -92,19 +92,25 @@ const validateTags = (value) => {
 pristine.addValidator(
   hashtagField,
   validateCountTags,
-  'Количество хэштегов не должно быть больше пяти'
+  `Количество хэштегов не должно быть больше ${HASHTAG_MAX_COUNT}`,
+  1,
+  true
 );
 
 pristine.addValidator(
   hashtagField,
   validateUniqueTags,
-  'Хэштеги не должны повторяться'
+  'Хэштеги не должны повторяться',
+  1,
+  true
 );
 
 pristine.addValidator(
   hashtagField,
   validateTags,
-  'Хэштег должен начинаться с "#"'
+  'Хэштег должен начинаться с "#"',
+  1,
+  true
 );
 
 const SubmitButtonText = {

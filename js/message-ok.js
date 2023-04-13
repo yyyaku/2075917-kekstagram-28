@@ -11,14 +11,15 @@ const closeModalSubmitOk = document.querySelector('.success__button');
 const closeOkMessage = () => {
   submitOkMessageContainer.classList.add('hidden');
   submitMessagePlaceOk.classList.remove('modal-open');
+  document.removeEventListener('keydown', onModalKeydownOk);
 };
 
-const onModalKeydownOk = (evt) => {
-  if (evt.key === 'Escape'(evt)) {
+function onModalKeydownOk (evt) {
+  if (evt.key === 'Escape') {
     evt.preventDefault();
     closeOkMessage();
   }
-};
+}
 
 document.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('success')) {

@@ -4,7 +4,6 @@ const thumbnailTemplate = document.querySelector('#picture')
   .querySelector('.picture');
 
 const createThumbnail = (similarObjects) => {
-  const similarListFragment = document.createDocumentFragment();
 
   similarObjects.forEach(({url, likes, comments, description, id}) => {
     const pictureElement = thumbnailTemplate.cloneNode(true);
@@ -17,8 +16,6 @@ const createThumbnail = (similarObjects) => {
 
     container.appendChild(pictureElement);
   });
-
-  container.appendChild(similarListFragment);
 };
 
 export {createThumbnail};

@@ -11,14 +11,15 @@ const closeModalSubmitError = document.querySelector('.error__button');
 const closeErrorMessage = () => {
   submitErrorMessageContainer.classList.add('hidden');
   submitMessagePlaceError.classList.remove('modal-open');
+  document.removeEventListener('keydown', onModalKeydownError);
 };
 
-const onModalKeydownError = (evt) => {
-  if (evt.key === 'Escape'(evt)) {
+function onModalKeydownError (evt) {
+  if (evt.key === 'Escape') {
     evt.preventDefault();
     closeErrorMessage();
   }
-};
+}
 
 document.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('error')) {
