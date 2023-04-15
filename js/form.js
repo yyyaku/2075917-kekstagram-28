@@ -145,4 +145,4 @@ const setOnFormSubmit = (cb) => {
 fileField.addEventListener('input', onFileFieldChange);
 cancelButton.addEventListener('click', onCancelButtonClick);
 
-export {setOnFormSubmit, closeModal};
+export {setOnFormSubmit, closeModal, onModalKeydown};
