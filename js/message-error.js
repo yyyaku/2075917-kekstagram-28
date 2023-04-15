@@ -1,9 +1,11 @@
+import {onModalKeydown} from './form.js';
+
 const submitMessagePlaceError = document.querySelector('body');
 const submitErrorMessageTemplate = document.querySelector('#error').content.querySelector('.error');
 
-const messageErrElement = submitErrorMessageTemplate.cloneNode(true);
-submitMessagePlaceError.append(messageErrElement);
-messageErrElement.classList.add('hidden');
+const messageErrorElement = submitErrorMessageTemplate.cloneNode(true);
+submitMessagePlaceError.append(messageErrorElement);
+messageErrorElement.classList.add('hidden');
 
 const submitErrorMessageContainer = document.querySelector('.error');
 const closeModalSubmitError = document.querySelector('.error__button');
@@ -12,6 +14,7 @@ const closeErrorMessage = () => {
   submitErrorMessageContainer.classList.add('hidden');
   submitMessagePlaceError.classList.remove('modal-open');
   document.removeEventListener('keydown', onModalKeydownError);
+  document.addEventListener('keydown', onModalKeydown);
 };
 
 function onModalKeydownError (evt) {
@@ -30,8 +33,8 @@ document.addEventListener('click', (evt) => {
 const showErrorMessage = () => {
   submitErrorMessageContainer.classList.remove('hidden');
   submitMessagePlaceError.classList.add('modal-open');
-
   document.addEventListener('keydown', onModalKeydownError);
+  document.removeEventListener('keydown', onModalKeydown);
 };
 
 closeModalSubmitError.addEventListener('click', () => {

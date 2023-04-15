@@ -32,10 +32,10 @@ const createComments = () => {
   }
 
   const commentFragment = document.createDocumentFragment();
-  for (let i = 0; i < commentsShown; i++) {
-    const commentElement = createComment(comments[i]);
+  comments.slice(0, commentsShown).forEach((item) => {
+    const commentElement = createComment(item);
     commentFragment.append(commentElement);
-  }
+  });
 
   commentsList.innerHTML = '';
   commentsList.append(commentFragment);
