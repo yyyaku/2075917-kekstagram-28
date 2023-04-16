@@ -46,9 +46,9 @@ const generateDiscussThumbnail = (arr) => {
 };
 
 const setButtonClick = (cb) => {
-  for (const btn of buttons) {
-    btn.addEventListener('click', () => {
-      cb(btn);
+  for (const button of buttons) {
+    button.addEventListener('click', () => {
+      cb(button);
     });
   }
 };
