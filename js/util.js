@@ -9,4 +9,4 @@ const debounce = (callback, timeoutDelay) => {
 
 const compareRandom = () => Math.random() - 0.5;
 
-export {debounce, compareRandom};
+export { debounce, compareRandom };
